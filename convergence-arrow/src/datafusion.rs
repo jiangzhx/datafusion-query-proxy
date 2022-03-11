@@ -46,11 +46,13 @@ impl Engine for DataFusionEngine {
 	type PortalType = DataFusionPortal;
 
 	async fn prepare(&mut self, statement: &Statement) -> Result<Vec<FieldDescription>, ErrorResponse> {
+		println!("{}",&statement.to_string());
 		let plan = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
 		schema_to_field_desc(&plan.schema().clone().into())
 	}
 
 	async fn create_portal(&mut self, statement: &Statement) -> Result<Self::PortalType, ErrorResponse> {
+		println!("{}",&statement.to_string());
 		let df = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
 		Ok(DataFusionPortal { df })
 	}

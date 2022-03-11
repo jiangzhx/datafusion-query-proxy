@@ -14,6 +14,7 @@ async-trait = "0.1"
 datafusion = "5.0.0"
 convergence = { path = "../convergence", version = "0.3.0" }
 chrono = "0.4"
+anyhow = "1"
 
 [dev-dependencies]
 tokio-postgres = { version =  "0.7", features = [ "with-chrono-0_4" ] }
