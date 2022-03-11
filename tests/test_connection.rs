@@ -1,12 +1,12 @@
 use async_trait::async_trait;
-use sqlparser::ast::{Expr, SelectItem, SetExpr, Statement};
-use std::sync::Arc;
-use tokio_postgres::{connect, NoTls, SimpleQueryMessage};
 use datafusion_postgresql_protocol::protocol::engine::{Engine, Portal};
-use datafusion_postgresql_protocol::protocol::protocol::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
+use datafusion_postgresql_protocol::protocol::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
 use datafusion_postgresql_protocol::protocol::protocol_ext::DataRowBatch;
 use datafusion_postgresql_protocol::protocol::server;
 use datafusion_postgresql_protocol::protocol::server::BindOptions;
+use sqlparser::ast::{Expr, SelectItem, SetExpr, Statement};
+use std::sync::Arc;
+use tokio_postgres::{connect, NoTls, SimpleQueryMessage};
 
 struct ReturnSingleScalarPortal;
 

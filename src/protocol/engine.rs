@@ -1,10 +1,9 @@
 //! Contains core interface definitions for custom SQL engines.
 
-
+use crate::protocol::{ErrorResponse, FieldDescription};
+use crate::protocol::protocol_ext::DataRowBatch;
 use async_trait::async_trait;
 use sqlparser::ast::Statement;
-use crate::protocol::protocol::{ErrorResponse, FieldDescription};
-use crate::protocol::protocol_ext::DataRowBatch;
 
 /// A Postgres portal. Portals represent a prepared statement with all parameters specified.
 ///

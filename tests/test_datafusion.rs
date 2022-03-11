@@ -1,10 +1,9 @@
-
 use datafusion::prelude::*;
-use std::sync::Arc;
-use tokio_postgres::{connect, NoTls};
 use datafusion_postgresql_protocol::datafusion::DataFusionEngine;
 use datafusion_postgresql_protocol::protocol::server;
 use datafusion_postgresql_protocol::protocol::server::BindOptions;
+use std::sync::Arc;
+use tokio_postgres::{connect, NoTls};
 
 async fn new_engine() -> DataFusionEngine {
 	let mut ctx = ExecutionContext::new();

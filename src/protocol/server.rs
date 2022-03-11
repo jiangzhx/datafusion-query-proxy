@@ -1,11 +1,10 @@
 //! Contains utility types and functions for starting and running servers.
 
-
+use crate::protocol::connection::Connection;
+use crate::protocol::engine::Engine;
 use std::pin::Pin;
 use std::sync::Arc;
 use tokio::net::TcpListener;
-use crate::protocol::connection::Connection;
-use crate::protocol::engine::Engine;
 
 /// Controls how servers bind to local network resources.
 #[derive(Default)]

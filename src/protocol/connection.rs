@@ -1,6 +1,12 @@
 //! Contains the [Connection] struct, which represents an individual Postgres session, and related types.
 
-
+use crate::protocol::engine::{Engine, Portal};
+use crate::protocol::{
+	AuthenticationOk, BindComplete, BindFormat, ClientMessage, CommandComplete, ConnectionCodec, Describe,
+	EmptyQueryResponse, ErrorResponse, FieldDescription, FormatCode, NoData, ParameterDescription, ParameterStatus,
+	ParseComplete, ProtocolError, ReadyForQuery, RowDescription, Severity, SqlState,
+};
+use crate::protocol::protocol_ext::DataRowBatch;
 use futures::{SinkExt, StreamExt};
 use sqlparser::ast::Statement;
 use sqlparser::dialect::PostgreSqlDialect;
@@ -8,9 +14,6 @@ use sqlparser::parser::Parser;
 use std::collections::HashMap;
 use tokio::io::{AsyncRead, AsyncWrite};
 use tokio_util::codec::Framed;
-use crate::protocol::engine::{Engine, Portal};
-use crate::protocol::protocol::{AuthenticationOk, BindComplete, BindFormat, ClientMessage, CommandComplete, ConnectionCodec, Describe, EmptyQueryResponse, ErrorResponse, FieldDescription, FormatCode, NoData, ParameterDescription, ParameterStatus, ParseComplete, ProtocolError, ReadyForQuery, RowDescription, Severity, SqlState};
-use crate::protocol::protocol_ext::DataRowBatch;
 
 /// Describes an error that may or may not result in the termination of a connection.
 #[derive(thiserror::Error, Debug)]

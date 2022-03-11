@@ -1,9 +1,9 @@
 //! Contains extensions that make working with the Postgres protocol simpler or more efficient.
 
+use crate::protocol::{ConnectionCodec, FormatCode, ProtocolError, RowDescription};
 use bytes::{BufMut, BytesMut};
 use chrono::{NaiveDate, NaiveDateTime};
 use tokio_util::codec::Encoder;
-use crate::protocol::protocol::{ConnectionCodec, FormatCode, ProtocolError, RowDescription};
 
 /// Supports batched rows for e.g. returning portal result sets.
 ///

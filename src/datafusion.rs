@@ -1,15 +1,14 @@
 //! Provides a DataFusion-powered implementation of the [Engine] trait.
 
+use crate::protocol::engine::{Engine, Portal};
+use crate::protocol::{ErrorResponse, FieldDescription, SqlState};
+use crate::protocol::protocol_ext::DataRowBatch;
 use crate::table::{record_batch_to_rows, schema_to_field_desc};
 use async_trait::async_trait;
 use datafusion::error::DataFusionError;
 use datafusion::prelude::*;
 use sqlparser::ast::Statement;
 use std::sync::Arc;
-use futures::{StreamExt, TryFutureExt};
-use crate::protocol::engine::{Engine, Portal};
-use crate::protocol::protocol::{ErrorResponse, FieldDescription, SqlState};
-use crate::protocol::protocol_ext::DataRowBatch;
 
 fn df_err_to_sql(err: DataFusionError) -> ErrorResponse {
 	ErrorResponse::error(SqlState::DATA_EXCEPTION, err.to_string())
@@ -47,13 +46,13 @@ impl Engine for DataFusionEngine {
 	type PortalType = DataFusionPortal;
 
 	async fn prepare(&mut self, statement: &Statement) -> Result<Vec<FieldDescription>, ErrorResponse> {
-		println!("{}",&statement.to_string());
+		println!("{}", &statement.to_string());
 		let plan = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
 		schema_to_field_desc(&plan.schema().clone().into())
 	}
 
 	async fn create_portal(&mut self, statement: &Statement) -> Result<Self::PortalType, ErrorResponse> {
-		println!("{}",&statement.to_string());
+		println!("{}", &statement.to_string());
 		let df = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
 		Ok(DataFusionPortal { df })
 	}

@@ -3,15 +3,15 @@ use chrono::{NaiveDate, NaiveDateTime};
 use datafusion::arrow::array::{ArrayRef, Date32Array, Float32Array, Int32Array, StringArray, TimestampSecondArray};
 use datafusion::arrow::datatypes::{DataType, Field, Schema, TimeUnit};
 use datafusion::arrow::record_batch::RecordBatch;
-use sqlparser::ast::Statement;
-use std::sync::Arc;
-use tokio_postgres::{connect, NoTls};
 use datafusion_postgresql_protocol::protocol::engine::{Engine, Portal};
-use datafusion_postgresql_protocol::protocol::protocol::{ErrorResponse, FieldDescription};
+use datafusion_postgresql_protocol::protocol::{ErrorResponse, FieldDescription};
 use datafusion_postgresql_protocol::protocol::protocol_ext::DataRowBatch;
 use datafusion_postgresql_protocol::protocol::server;
 use datafusion_postgresql_protocol::protocol::server::BindOptions;
 use datafusion_postgresql_protocol::table::{record_batch_to_rows, schema_to_field_desc};
+use sqlparser::ast::Statement;
+use std::sync::Arc;
+use tokio_postgres::{connect, NoTls};
 
 struct ArrowPortal {
 	batch: RecordBatch,

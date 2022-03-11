@@ -3,5 +3,5 @@
 #![warn(missing_docs)]
 
 pub mod datafusion;
-pub mod table;
 pub mod protocol;
+pub mod table;
