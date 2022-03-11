@@ -16,7 +16,7 @@ async fn new_engine() -> DataFusionEngine {
 #[tokio::main]
 async fn main() -> Result<()> {
 
-    let port = server::run(BindOptions::new().with_port(5432), Arc::new(|| Box::pin(new_engine())))
+     server::run(BindOptions::new().with_port(5432), Arc::new(|| Box::pin(new_engine())))
         .await
         .unwrap();
     Ok(())
