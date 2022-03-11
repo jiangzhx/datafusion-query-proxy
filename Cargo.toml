@@ -1,5 +1,23 @@
-[workspace]
-members = [
-	"convergence",
-	"convergence-arrow",
-]
+[package]
+name = "datafusion-postgresql-protocol"
+version = "0.3.1"
+authors = ["Ruan Pearce-Authers <ruan@reservoirdb.com>"]
+edition = "2018"
+description = "Write servers that speak PostgreSQL's wire protocol"
+license = "MIT"
+repository = "https://github.com/reservoirdb/convergence"
+
+[dependencies]
+tokio = { version = "1.16", features = [ "net", "rt-multi-thread", "macros", "io-util", "io-std" ] }
+tokio-util = { version = "0.7", features = [ "codec" ] }
+thiserror = "1.0"
+bytes = "1.0"
+futures = "0.3"
+sqlparser = "0.13"
+async-trait = "0.1"
+chrono = "0.4"
+anyhow = "1"
+datafusion = "5.0.0"
+
+[dev-dependencies]
+tokio-postgres = "0.7"
