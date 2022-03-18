@@ -2,7 +2,7 @@ use datafusion::arrow::datatypes::DataType;
 use msql_srv::QueryResultWriter;
 use std::{io, net};
 
-pub fn on_query(sql: &str, writer: QueryResultWriter<net::TcpStream>) -> io::Result<()> {
+pub fn on_query(_sql: &str, _writer: QueryResultWriter<net::TcpStream>) -> io::Result<()> {
 	let task = async {};
 	tokio::runtime::Builder::new_current_thread()
 		.enable_all()

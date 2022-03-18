@@ -18,7 +18,7 @@ pub struct DataFusionBackend {
 }
 
 impl DataFusionBackend {
-	pub fn new(scheduler_bind_host: &str, scheduler_bind_port: u16) -> Self {
+	pub fn new(_scheduler_bind_host: &str, _scheduler_bind_port: u16) -> Self {
 		DataFusionBackend {
 			columns: Vec::new(),
 			params: Vec::new(),
