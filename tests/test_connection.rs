@@ -1,9 +1,9 @@
 use async_trait::async_trait;
-use datafusion_postgresql_protocol::protocol::engine::{Engine, Portal};
-use datafusion_postgresql_protocol::protocol::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
-use datafusion_postgresql_protocol::protocol::protocol_ext::DataRowBatch;
-use datafusion_postgresql_protocol::protocol::server;
-use datafusion_postgresql_protocol::protocol::server::BindOptions;
+use datafusion_query_proxy::protocol::engine::{Engine, Portal};
+use datafusion_query_proxy::protocol::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
+use datafusion_query_proxy::protocol::protocol_ext::DataRowBatch;
+use datafusion_query_proxy::protocol::server;
+use datafusion_query_proxy::protocol::server::BindOptions;
 use sqlparser::ast::{Expr, SelectItem, SetExpr, Statement};
 use std::sync::Arc;
 use tokio_postgres::{connect, NoTls, SimpleQueryMessage};

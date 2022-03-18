@@ -1,10 +1,11 @@
 use anyhow::Result;
 use datafusion::datasource::CsvReadOptions;
 use datafusion::prelude::ExecutionContext;
-use datafusion_postgresql_protocol::datafusion::DataFusionEngine;
-use datafusion_postgresql_protocol::protocol::server;
-use datafusion_postgresql_protocol::protocol::server::BindOptions;
 use std::sync::Arc;
+use datafusion_query_proxy::datafusion::DataFusionEngine;
+use datafusion_query_proxy::protocol::server;
+use datafusion_query_proxy::protocol::server::BindOptions;
+
 
 async fn new_engine() -> DataFusionEngine {
 	let mut ctx = ExecutionContext::new();

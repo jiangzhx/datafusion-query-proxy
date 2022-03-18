@@ -1,7 +1,7 @@
 use datafusion::prelude::*;
-use datafusion_postgresql_protocol::datafusion::DataFusionEngine;
-use datafusion_postgresql_protocol::protocol::server;
-use datafusion_postgresql_protocol::protocol::server::BindOptions;
+use datafusion_query_proxy::datafusion::DataFusionEngine;
+use datafusion_query_proxy::protocol::server;
+use datafusion_query_proxy::protocol::server::BindOptions;
 use std::sync::Arc;
 use tokio_postgres::{connect, NoTls};
 

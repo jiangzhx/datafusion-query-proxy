@@ -1,11 +1,11 @@
 [package]
-name = "datafusion-postgresql-protocol"
-version = "0.3.1"
-authors = ["Ruan Pearce-Authers <ruan@reservoirdb.com>"]
+name = "datafusion-query-proxy"
+version = "0.0.1"
+authors = ["jiangzhx <jianghzhx@gmail.com>"]
 edition = "2018"
-description = "Write servers that speak PostgreSQL's wire protocol"
+description = "Write servers that speak (PostgreSQL|Mysql)'s wire protocol"
 license = "MIT"
-repository = "https://github.com/reservoirdb/convergence"
+repository = "https://github.com/jiangzhx/datafusion-query-proxy"
 
 [dependencies]
 tokio = { version = "1.16", features = [ "net", "rt-multi-thread", "macros", "io-util", "io-std" ] }
