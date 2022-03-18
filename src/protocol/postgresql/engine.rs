@@ -1,7 +1,7 @@
 //! Contains core interface definitions for custom SQL engines.
 
-use crate::protocol::{ErrorResponse, FieldDescription};
-use crate::protocol::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::{ErrorResponse, FieldDescription};
 use async_trait::async_trait;
 use sqlparser::ast::Statement;
 

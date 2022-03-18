@@ -1,8 +1,8 @@
 //! Provides a DataFusion-powered implementation of the [Engine] trait.
 
-use crate::protocol::engine::{Engine, Portal};
-use crate::protocol::{ErrorResponse, FieldDescription, SqlState};
-use crate::protocol::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::engine::{Engine, Portal};
+use crate::protocol::postgresql::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::{ErrorResponse, FieldDescription, SqlState};
 use crate::table::{record_batch_to_rows, schema_to_field_desc};
 use async_trait::async_trait;
 use datafusion::error::DataFusionError;
@@ -47,13 +47,13 @@ impl Engine for DataFusionEngine {
 
 	async fn prepare(&mut self, statement: &Statement) -> Result<Vec<FieldDescription>, ErrorResponse> {
 		println!("{}", &statement.to_string());
-		let plan = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
+		let plan = self.ctx.sql(&statement.to_string()).await.map_err(df_err_to_sql)?;
 		schema_to_field_desc(&plan.schema().clone().into())
 	}
 
 	async fn create_portal(&mut self, statement: &Statement) -> Result<Self::PortalType, ErrorResponse> {
 		println!("{}", &statement.to_string());
-		let df = self.ctx.sql(&statement.to_string()).map_err(df_err_to_sql)?;
+		let df = self.ctx.sql(&statement.to_string()).await.map_err(df_err_to_sql)?;
 		Ok(DataFusionPortal { df })
 	}
 }

@@ -1,7 +1,7 @@
 //! Utilities for converting between Arrow and Postgres formats.
 
-use crate::protocol::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
-use crate::protocol::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::{DataTypeOid, ErrorResponse, FieldDescription, SqlState};
 use datafusion::arrow::array::{
 	Date32Array, Date64Array, Float32Array, Float64Array, Int16Array, Int32Array, Int64Array, Int8Array, StringArray,
 	TimestampMicrosecondArray, TimestampMillisecondArray, TimestampNanosecondArray, TimestampSecondArray, UInt16Array,

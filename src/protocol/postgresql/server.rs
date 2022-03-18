@@ -1,7 +1,7 @@
 //! Contains utility types and functions for starting and running servers.
 
-use crate::protocol::connection::Connection;
-use crate::protocol::engine::Engine;
+use crate::protocol::postgresql::connection::Connection;
+use crate::protocol::postgresql::engine::Engine;
 use std::pin::Pin;
 use std::sync::Arc;
 use tokio::net::TcpListener;

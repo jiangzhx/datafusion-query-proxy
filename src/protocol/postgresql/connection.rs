@@ -1,12 +1,12 @@
 //! Contains the [Connection] struct, which represents an individual Postgres session, and related types.
 
-use crate::protocol::engine::{Engine, Portal};
-use crate::protocol::{
+use crate::protocol::postgresql::engine::{Engine, Portal};
+use crate::protocol::postgresql::protocol_ext::DataRowBatch;
+use crate::protocol::postgresql::{
 	AuthenticationOk, BindComplete, BindFormat, ClientMessage, CommandComplete, ConnectionCodec, Describe,
 	EmptyQueryResponse, ErrorResponse, FieldDescription, FormatCode, NoData, ParameterDescription, ParameterStatus,
 	ParseComplete, ProtocolError, ReadyForQuery, RowDescription, Severity, SqlState,
 };
-use crate::protocol::protocol_ext::DataRowBatch;
 use futures::{SinkExt, StreamExt};
 use sqlparser::ast::Statement;
 use sqlparser::dialect::PostgreSqlDialect;

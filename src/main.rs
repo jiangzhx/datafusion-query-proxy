@@ -1,20 +1,15 @@
 use anyhow::Result;
-use datafusion::datasource::CsvReadOptions;
-use datafusion::prelude::ExecutionContext;
-use std::sync::Arc;
+use datafusion::prelude::{CsvReadOptions, ExecutionContext};
 use datafusion_query_proxy::datafusion::DataFusionEngine;
-use datafusion_query_proxy::protocol::server;
-use datafusion_query_proxy::protocol::server::BindOptions;
-
+use datafusion_query_proxy::protocol::postgresql::server;
+use datafusion_query_proxy::protocol::postgresql::server::BindOptions;
+use std::sync::Arc;
 
 async fn new_engine() -> DataFusionEngine {
 	let mut ctx = ExecutionContext::new();
-	ctx.register_csv(
-		"test_100_4buckets",
-		"/Users/sylar/workspace/opensource/convergence/convergence-arrow/data/100_4buckets.csv",
-		CsvReadOptions::new(),
-	)
-	.expect("failed to register csv");
+	ctx.register_csv("test_100_4buckets", "data/100_4buckets.csv", CsvReadOptions::new())
+		.await
+		.expect("failed to register csv");
 
 	DataFusionEngine::new(ctx)
 }
