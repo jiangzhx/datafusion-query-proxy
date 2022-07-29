@@ -628,7 +628,7 @@ dependencies = [
  "futures",
  "msql-srv",
  "mysql",
- "sqlparser 0.15.0",
+ "sqlparser 0.19.0",
  "thiserror",
  "tokio",
  "tokio-postgres",
@@ -2280,9 +2280,9 @@ dependencies = [
 
 [[package]]
 name = "sqlparser"
-version = "0.15.0"
+version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adbbea2526ad0d02ad9414a07c396078a5b944bbf9ca4fbab8f01bb4cb579081"
+checksum = "d8ec7ef1bad82a2453dbaef7218b6f036e545edcce1ffd55f6e7af7bea43cce2"
 dependencies = [
  "log",
 ]
